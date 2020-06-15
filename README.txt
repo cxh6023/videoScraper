@@ -1,0 +1,1 @@
+This python program will read a file called "songs.txt", assuming it's in the same directory as the Python file, line by line and look up those texts using the YouTube search query, gets the most likely video to have the song without copyright infringement and trouble with ytmpr.cc. The program then goes to a link to mp3 converter and downloads the selected video URL.
