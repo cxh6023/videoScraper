@@ -1,9 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 
-def getSong(song_info, profile, driver):
+def get_song(song_info, profile, driver):
     search_URL = "https://www.youtube.com/results?search_query="
     song_info = song_info.replace(" ", "+")
     lyrics = "+lyrics"
@@ -51,6 +52,7 @@ def getSong(song_info, profile, driver):
     driver.get(link)
     time.sleep(5)
 
+
 def main():
     songs = list()
     file = open("C:\\Users\\b1n4ry\\Desktop\\songs.txt", "r+")
@@ -66,13 +68,12 @@ def main():
     options.add_argument('window-size=1920x1080')
     options.add_argument("disable-gpu")
 
-    driver = webdriver.Chrome(options=options,
-                              executable_path='C:\\Users\\b1n4ry\\Downloads\\chromedriver_win32(3)\\chromedriver')
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
     profile = ""
     for line in file:
         print("Search: " + line)
-        getSong(line, profile, driver)
+        get_song(line, profile, driver)
         print("Downloaded...")
 
 
